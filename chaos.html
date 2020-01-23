@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<!--   <link href="chaos.css" rel="stylesheet"> -->
+    <style>
+      body{
+          background-color: black;
+      }
+
+  .Chaos{
+      text-align: center;
+      color: white;
+      font-size: 3rem;  
+    }
+
+  .canvas{  
+        margin-left:200px;
+
+  }
+
+  .out{
+    justify-content: center;
+    height: 1.2rem;
+    color:black;
+    margin-left: 10px;
+    }
+
+  .but{
+    background-color: black;
+    border-color: white;
+    color: white;
+    height: 2rem;
+  }
+
+
+
+
+
+/*.A{
+font-size: 2rem;
+position: absolute;
+  width: 100px;
+  height: 100px;
+
+  background-color: black;
+  color: white;margin-left: 10vh;
+margin-top: 10vh;
+
+}
+.B{
+font-size: 2rem;
+position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+
+  background-color: black;
+  color: white;
+
+}
+.C{
+font-size: 2rem;
+
+position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+ 
+  background-color: black;
+  color: white;}*/
+
+</style>
+  <title>Chaos</title>
+</head>
+
+<body>
+  <div class="Chaos" id ="Chaos">Chaos Game</div>
+   <input id="itr" class="out" type="number" value="500">
+   <input onclick="okbut()" class="but" type="submit" value="Ok">
+  
+   <div id="canvas-block">
+    <canvas id="canvas" class="canvas" width="500" height="500"></canvas>
+   </div> 
+
+
+  <script >
+    var can = document.getElementById("canvas"),
+    width= canvas.width,
+    height= canvas.height,
+    ca= can.getContext("2d");
+
+
+var  itr= document.getElementById('itr');
+var it,x,y;
+function z() {
+  this.x = 0;
+  this.y = 0;
+}
+
+let last= new z;
+let temp= new z;
+let a=new z;
+let b=new z;
+let c=new z;
+var rand;
+
+
+last.x=Math.floor(Math.random() * height);
+ last.y=Math.floor(Math.random() * width);
+
+var l,w;
+function drawPoint(l,w){
+    var pt = 2; 
+    ca.fillStyle = ' rgb(255, 255, 255)';
+    ca.beginPath();
+  
+   
+    ca.arc(l,w, pt, 0, Math.PI * 2,true); 
+      ca.fill();
+
+  }
+
+function drawPointx(z){
+    var pt = 4; 
+    ca.fillStyle = ' rgb(255, 255, 255)';
+    ca.beginPath();
+    ca.arc(z.x,z.y, pt, 0, Math.PI * 2, true); 
+      ca.fill();
+  }
+a.x=Math.floor(Math.random() * height);
+b.x=Math.floor(Math.random() * height);
+
+c.x=Math.floor(Math.random() * height)
+a.y=Math.floor(Math.random() * width);
+b.y=Math.floor(Math.random() * width);
+c.y=Math.floor(Math.random() * width);
+
+drawPointx(a);
+drawPointx(b);
+
+drawPointx(c);
+
+// drawPoint(last);
+
+function okbut() {
+if (itr.value >= 2 && itr.value <= 5000)
+ {
+    it = itr.value;
+
+    for (var i = 0; i < it; i++) 
+    {
+    rand=Math.floor(Math.random()*6);
+    if(rand==1||rand==2)
+      {
+        temp.x=(last.x+a.x)/2;
+        
+        temp.y=(last.y+a.y)/2;
+        drawPoint(temp.x,temp.y);
+
+        
+      }
+
+      else if(rand==3||rand==4)
+      {
+        temp.x=(last.x+b.x)/2;
+        temp.y=(last.y+b.y)/2;
+        drawPoint(temp.x,temp.y);
+      }
+      
+      else if(rand==5||rand==6)
+      {
+        temp.x=(last.x+c.x)/2;
+        temp.y=(last.y+c.y)/2;
+        drawPoint(temp.x,temp.y);
+      } 
+
+        last=temp;
+        // alert(last.x);
+    } 
+    
+  }
+  else
+    alert("Input Between 2 and 5000");
+}
+</script>
+</body>
+</html>
+
+
+ <!-- <div class="A" id="A">
+    <p>A.</div>  
+  <div class="B" id="B"><p>
+  B.</div>  
+  <div class="C" id="C"><p>C.</div>
+     -->
